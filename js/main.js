@@ -1,10 +1,10 @@
 $(document).ready(function() {
 var vertexHeight = 15;
 var planeDefinition = 50;
-var planeSize = 25000;
+var planeSize = 20000;
 
 var container = document.getElementById('head_threejs');
-var fog = new THREE.Fog(0x000000, 1000, 10000);
+var fog = new THREE.Fog(0x000000, 300, 7000);
 var camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight,1, 20000)
 
 camera.position.z = 3500;
@@ -12,7 +12,7 @@ camera.position.z = 3500;
 var scene = new THREE.Scene();
 
 var geometry = new THREE.PlaneGeometry(planeSize, planeSize, planeDefinition, planeDefinition);
-geometry.dynamic = true;
+  geometry.dynamic = true;
   geometry.computeFaceNormals();
   geometry.computeVertexNormals();
   geometry.normalsNeedUpdate = true;
@@ -20,7 +20,7 @@ geometry.dynamic = true;
 var material = new THREE.MeshPhongMaterial({color: 0xffffff, specular: 0xffffff, shininess: 0, shading: THREE.FlatShading});
 
 var	plane = new THREE.Mesh(geometry, material);
-plane.rotation.x -=1;
+plane.rotation.x -=1.1;
 
 scene.add( plane );
 scene.fog = fog;
@@ -33,7 +33,7 @@ scene.fog = fog;
   scene.add( dirLight );
 
 
-var renderer = new THREE.WebGLRenderer();
+var renderer = new THREE.WebGLRenderer({antialiasing: true, alpha: true});
 renderer.setSize(window.innerWidth, window.innerHeight);
 container.appendChild( renderer.domElement );
 
@@ -48,12 +48,14 @@ updatePlane();
 
  updateVerts();
 
+
  function updateVerts() {
    for (var i = 0; i < plane.geometry.vertices.length; i++)
    {
      plane.geometry.vertices[i].z += Math.random()*vertexHeight -(vertexHeight/2);
    }
    plane.geometry.verticesNeedUpdate = true;
+   plane.geometry.normalsNeedUpdate = true;
  };
 
 render();
