@@ -15,7 +15,7 @@ var renderer	= new THREE.WebGLRenderer({
 	camera.position.z = 15;
    camera.position.y = 2;
 
-  scene.fog = new THREE.Fog(0x000, 0, 45);
+  scene.fog = new THREE.Fog(0x000, 0, 35);
 	;(function(){
 
 		var light	= new THREE.AmbientLight( 0x202020 )
@@ -35,7 +35,8 @@ var renderer	= new THREE.WebGLRenderer({
 	THREEx.Terrain.heightMapToVertexColor(heightMap, geometry)
 
 	var material	= new THREE.MeshBasicMaterial({
-		wireframe: true
+		wireframe: false,
+    shininess: 0
 	});
 
   var mesh	= new THREE.Mesh( geometry, material );
