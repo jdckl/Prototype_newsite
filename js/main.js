@@ -28,7 +28,7 @@ scene.fog = fog;
   var ambientLight = new THREE.AmbientLight(0x1a1a1a);
   scene.add( ambientLight );
 
-  var dirLight = new THREE.DirectionalLight(0xdfe8ef, 0.10);
+  var dirLight = new THREE.DirectionalLight(0xdfe8ef, 0.3);
   dirLight.position.set(3, 5, 1);
   scene.add( dirLight );
 
@@ -52,7 +52,7 @@ updatePlane();
  function updateVerts() {
    for (var i = 0; i < plane.geometry.vertices.length; i++)
    {
-     plane.geometry.vertices[i].z += Math.random()*vertexHeight -(vertexHeight/2);
+     plane.geometry.vertices[i].z -= Math.random()*vertexHeight -(vertexHeight/2);
    }
    plane.geometry.verticesNeedUpdate = true;
    plane.geometry.normalsNeedUpdate = true;
