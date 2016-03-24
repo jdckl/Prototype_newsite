@@ -1,8 +1,10 @@
 $(document).ready(function() {
 var renderer	= new THREE.WebGLRenderer({
-		antialias	: true
+		antialias	: true,
+		alpha : true
 	});
 	renderer.setSize( window.innerWidth, window.innerHeight );
+	renderer.setClearColor( 0xffffff, 0);
 
   var container = document.getElementById('head_threejs');
 	container.appendChild( renderer.domElement );
@@ -15,7 +17,7 @@ var renderer	= new THREE.WebGLRenderer({
 	camera.position.z = 15;
    camera.position.y = 2;
 
-  scene.fog = new THREE.Fog(0x000, 0, 35);
+  scene.fog = new THREE.Fog(0x3d315b, 0, 35);
 	;(function(){
 
 		var light	= new THREE.AmbientLight( 0x202020 )
@@ -29,17 +31,19 @@ var renderer	= new THREE.WebGLRenderer({
 		light.position.set(-0.5, -0.5, -2)
 		scene.add( light )
 	})()
+
 	var heightMap	= THREEx.Terrain.allocateHeightMap(256,256)
 	THREEx.Terrain.simplexHeightMap(heightMap)
 	var geometry	= THREEx.Terrain.heightMapToPlaneGeometry(heightMap)
 	THREEx.Terrain.heightMapToVertexColor(heightMap, geometry)
 
 	var material	= new THREE.MeshBasicMaterial({
-		wireframe: false,
-    shininess: 0
+		wireframe: true,
+    color: 0x444b6e
 	});
 
   var mesh	= new THREE.Mesh( geometry, material );
+	mesh.geometry.dynamic = true;
 	scene.add( mesh );
 
   mesh.lookAt(new THREE.Vector3(0,1,0));
@@ -49,7 +53,7 @@ var renderer	= new THREE.WebGLRenderer({
 	mesh.scale.multiplyScalar(10);
 
 	onRenderFcts.push(function(delta, now){
-		mesh.rotation.z += 0.05 * delta;
+		var rotateit = mesh.rotation.z += 0.03 * delta;
 	})
 	onRenderFcts.push(function(){
 		renderer.render( scene, camera );
@@ -65,4 +69,26 @@ var renderer	= new THREE.WebGLRenderer({
 			onRenderFct(deltaMsec/1000, nowMsec/1000)
 		})
 	})
+
+	$("#introbutton").hover(function(){
+
+    }, function(){
+
+	});
+
+});
+
+$(document).ready(function() {
+    var divs = $('#intro, .fa-angle-down');
+    if($(window).scrollTop() >= 10) divs.fadeOut('fast');
+    $('.banner img').ready(function() {divs.css('top', $('.banner img').position().top + $('.banner img').height() - divs.height());}); //1
+
+    $(window).on('scroll', function(){
+       if($(window).scrollTop() < 400){
+             divs.fadeIn("fast");
+       } else {
+             divs.fadeOut("fast");
+       }
+    });
+
 });
