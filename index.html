@@ -15,9 +15,9 @@
 
   <script src="js/three.min.js"></script>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-       <script src='js/SimplexNoise.js'></script>
-        <script src='js/threex.terrain.js'></script>
+       <script src='js/simplex.js'></script>
   <script src="js/main.js"></script>
+  <script src="js/supportive.js"></script>
 
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -25,11 +25,21 @@
 </head>
 
 <body>
-<section class="fullsize first">
+  <nav>
+    <h1>O</h1>
+    <ul>
+      <li>Home</li>
+      <li>About me</li>
+      <li>Portfolio</li>
+      <li>Contact</li>
+    </ul>
+    <div id="lang"><a href="#">Česky</a>/<a href="#">English</a></div>
+  </nav>
+<section class="fullsize first" id="holder">
 <div id="head_threejs"></div>
   <div id="intro">
     <h1>I'm Jan Dočekal.</h1>
-    <h2>I'm a graphic designer, based in Prague - Czech Republic. I'm 23 years old. Specializing on digital media, webdesign and the connection between design and code.</h2>
+    <h2>I'm a graphic designer, based in <span>Prague - Czech Republic</span>. I'm 23 years old. Specializing on digital media, webdesign and the connection between design and code.</h2>
     <button id="introbutton" class="cv">Grab my CV</button><button id="introbutton" class="pf">Download my portfolio</button>
     <i class="fa fa-angle-down"></i>
   </div>
@@ -41,6 +51,8 @@
 <section class="third">
 
 </section>
+<section class="last">
 
+</section>
 </body>
 </html>

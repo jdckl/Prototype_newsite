@@ -1,41 +1,68 @@
+::selection{
+  background: #28afb0;
+}
+
+::-moz-selection {
+  background: #28afb0;
+}
+
+html{height: 100%;}
+
 body{
   margin: 0;
   padding: 0;
+  height: 100%;
   font-family: 'Open Sans', sans-serif;
 }
 
+a{color: white; text-decoration: none;}
+a:hover{text-decoration: underline;}
+
+nav{position: fixed; width: 100%; height: 80px; z-index: 2;}
+nav #lang{position: absolute; top: 50%; transform: translateY(-50%); right: 20px; margin-right: 20px; color: white;}
+#lang a{color. white;margin-right: 10px;margin-left: 10px; font-family: 'Hind', sans-serif;}
+
+nav h1{margin: 0px; position: absolute; left: 20px; top: 50%; transform: translateY(-50%); display: none; color: white;}
+nav ul{list-style-type: none; margin-left: 30px; margin-top: 14px; display: none;}
+nav ul li{display: inline; margin: 10px; color: white;}
+
 canvas{
   max-width: 100%;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  height: 100%;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
 }
+
+.opashow{opacity: 0.8;}
 
 #head_threejs{
   z-index: 0;
   position: absolute;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+    background-color: #3d315b;
 }
 
 section{
   width: 100%;
   height: 100%;
+  display: inline-block;
+  position: relative;
+  z-index: 2;
 }
 
 .fullsize{}
 
 .first{
-  background-color: #3d315b;
-  overflow: hidden;
-  height: 100vh;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+position: fixed;
+top: 0;
+z-index: 0;
 }
 
 #intro{
-  max-height: none;width: 500px;
+  max-height: none;
+  max-width: 560px;
   margin: 0 auto;
-  height: 100%;
   color: white;
   z-index: 1;
   position: relative;
@@ -45,6 +72,7 @@ section{
 #intro h1{
   margin-top: 50%;
   font-family: 'Hind', sans-serif;
+  font-size: 34px;
 }
 #intro h2{
   font-weight: normal;
@@ -52,44 +80,55 @@ section{
   margin-bottom: 40px;
 }
 
+#intro h2 span:hover{ border-bottom: 2px solid white; color: white;}
+
 #introbutton{
-  border-radius: 3px;
+  border-radius: 4px;
   padding: 12px;
-  background: none;
+  background: white;
   border: 2px solid white;
   margin: 5px;
-  color: white;
+  color: #28afb0;
   font-weight: 500;
-  transition: background .3s ease-in;
+  transition: background .2s ease-in-out;
+  font-family: 'Hind', sans-serif;
+  font-size: 17px;
+  padding-bottom: 10px;
 }
 
 #introbutton:hover{
-  background: white;
-  color: black;
+  background: none;
+  color: white;
   cursor: pointer;
 }
 
 #intro .fa-angle-down{
   margin-top: 50%;
   display: block;
-  font-size: 25px;
+  font-size: 30px;
+  color: #fff;
 }
 
 .second{
   background-color: white;
-  height: 30vh;
-}
-.third{
-  background-color: #211E23;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  height: 50vh;
+  height: 500px;
+  top: 100%;
+  z-index: 100;
+  position: relative;
 }
 
-video#bgvid {
-    width: 100%;
-    height: 100%;
-    z-index: -100;
-    background: url(polina.jpg) no-repeat;
-    background-size: cover;
+.third{
+  background-color: #211e23;
+  height: 250vh;
+  margin: 0;
+  top: 99%;
+  z-index: 100;
+  position: relative;
+}
+.last{
+  background: none;
+  height: 100%;
+  position: relative;
+  z-index: 100;
+  top: 99%;
 }
